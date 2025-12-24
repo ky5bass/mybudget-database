@@ -1,0 +1,15 @@
+services:
+  mybudget-database:
+    image: postgres:18.1
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mybudgetdb
+    ports:
+      - 15432:5432
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - mybudget-database-data:/var/lib/postgresql
+
+volumes:
+  mybudget-database-data:
